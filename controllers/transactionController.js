@@ -99,7 +99,7 @@ module.exports = {
         },
       });
 
-      const serializedTransactions = transactions.map((transaction) => ({
+      const formatedTransactions = transactions.map((transaction) => ({
         transaction_id: transaction.id,
         source_account_id: transaction.source_account_id,
         source_account_name: transaction.source_account.user.name,
@@ -107,7 +107,7 @@ module.exports = {
         destination_account_name: transaction.destination_account.user.name,
         amount: transaction.amount.toString(),
       }));
-      return res.json({ data: serializedTransactions });
+      return res.json({ data: formatedTransactions });
     } catch (error) {
       console.error(error);
       return res
