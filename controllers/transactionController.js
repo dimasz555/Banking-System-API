@@ -66,9 +66,9 @@ module.exports = {
         data: {
           transaction_id: transaction.id,
           source_account_id: transaction.sourceAccountId,
-          destination_account_id: transaction.destinationAccountId,
           source_account_id: sourceAccount.id,
           source_account_name: sourceAccount.user.name,
+          destination_account_id: transaction.destinationAccountId,
           destination_account_id: destinationAccount.id,
           destination_account_name: destinationAccount.user.name,
           amount: amount.toString(),
