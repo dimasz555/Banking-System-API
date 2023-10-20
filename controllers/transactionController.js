@@ -71,7 +71,7 @@ module.exports = {
           destination_account_id: transaction.destinationAccountId,
           destination_account_id: destinationAccount.id,
           destination_account_name: destinationAccount.user.name,
-          amount: amount.toString(),
+          amount: Number(amount),
         },
       });
     } catch (error) {
@@ -105,7 +105,8 @@ module.exports = {
         source_account_name: transaction.source_account.user.name,
         destination_account_id: transaction.destination_account_id,
         destination_account_name: transaction.destination_account.user.name,
-        amount: transaction.amount.toString(),
+        amount: Number(transaction.amount),
+
       }));
       return res.json({ data: formatedTransactions });
     } catch (error) {
@@ -144,7 +145,7 @@ module.exports = {
         source_account_name: transaction.source_account.user.name,
         destination_account_id: transaction.destination_account_id,
         destination_account_name: transaction.destination_account.user.name,
-        amount: transaction.amount.toString(),
+        amount: Number(transaction.amount),
       };
       return res.json({ data: transactionById });
     } catch (error) {

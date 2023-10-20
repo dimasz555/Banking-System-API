@@ -59,8 +59,9 @@ module.exports = {
   
       res.json(formattedAccounts);
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: "Internal server error" });
+      return res.status(500).json({
+        error
+      })
     }
   },
 
@@ -100,8 +101,9 @@ module.exports = {
       }
       return res.json(data);
     } catch (error) {
-      console.error(error);
-      return res.status(500).json({error: 'Internal Server Error'})
+      return res.status(500).json({
+        error
+      })
     }
   }
 };

@@ -1,9 +1,11 @@
-const express = require ('express')
-const router = express.Router()
-const userController = require('./controllers/userController')
-const accountController = require('./controllers/accountController')
-const transactionController = require('./controllers/transactionController')
-const checkToken = require('./middleware/checkToken')
+const express = require ('express'),
+    router = express.Router(),
+    userController = require('./controllers/userController'),
+    accountController = require('./controllers/accountController'),
+    transactionController = require('./controllers/transactionController'),
+    checkToken = require('./middleware/checkToken'),
+    validate = require('./middleware/validate'),
+    schema = require ('./validatorSchemas/authValidatorSchema')
 
 router.get('/',(req,res) => {
     return res.json({
@@ -12,8 +14,8 @@ router.get('/',(req,res) => {
 })
 
 // Users
-router.post('/auth/register', userController.registerUser)
-router.post('/auth/login', userController.loginUser)
+router.post('/auth/register',validate(schema.registerValidator),userController.registerUser)
+router.post('/auth/login',validate(schema.loginValidator), userController.loginUser)
 router.get('/auth/authenticate', checkToken, userController.getProfile)
 
 router.post("/users",userController.registerUser)
